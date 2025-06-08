@@ -1,0 +1,23 @@
+name: Deployment pipeline
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubunto-latest
+        steps: 
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 18
+            - run: npm ci
+            - run: npm test
+            - name: instalar las dependencias
+              run: npm install
+            - name: Lint
+              run: npm run esLint
