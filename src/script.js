@@ -1,3 +1,5 @@
+import { suma } from './suma.js';
+
 function calcular() {
     const op1 = parseFloat(document.getElementById('op1').value);
     const op2 = parseFloat(document.getElementById('op2').value);
@@ -33,12 +35,6 @@ function calcular() {
 
     elemResultado.textContent = "Resultado: " + resultado;
 }
-
-function suma(A, B) {
-    suma = A + B;
-    return suma
-}
-
 
 function borrar() {
     document.getElementById('op1').value = '';
