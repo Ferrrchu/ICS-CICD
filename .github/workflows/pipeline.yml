@@ -31,6 +31,11 @@ jobs:
           
       - name: Lint.
         run: npm run lint
+
+      - name: SonarQube.
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
       
       - name: Feedback - Test aprobado.
         if: success()
@@ -56,8 +61,6 @@ jobs:
           SLACK_MESSAGE: "Test fallido :("
           MSG_MINIMAL: true
           SLACK_FOOTER: "CICD - ICS"
-
-      #sonarcloud
 
   Deploy:
     runs-on: ubuntu-latest
