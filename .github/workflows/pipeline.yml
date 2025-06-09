@@ -76,6 +76,7 @@ jobs:
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test aprobado :)"
           MSG_MINIMAL: true
+          SLACK_FILE_UPLOAD: /home/runner/work/ICS-CICD/ICS-CICD/images/gato-bailarin.gif
       - name: Test fallidos.
         if: failure()
         uses: rtCamp/action-slack-notify@v2
