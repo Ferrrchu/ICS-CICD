@@ -72,19 +72,22 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
           SLACK_ICON_EMOJI: squirrel
-          SLACK_USERNAME: Test feedback
+          SLACK_USERNAME: Agente de feedback
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test aprobado :)"
+          MSG_MINIMAL: true
       - name: Test fallidos.
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
           SLACK_ICON_EMOJI: squirrel
-          SLACK_USERNAME: Test feedback
+          SLACK_USERNAME: Agente de feedback
           SLACK_COLOR: cancelled
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test fallido :("
+          MSG_MINIMAL: true
+
 
 
     
