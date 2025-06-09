@@ -1,6 +1,6 @@
 import { suma } from './suma.js';
 
-function calcular() {
+export function calcular() {
     const op1 = parseFloat(document.getElementById('op1').value);
     const op2 = parseFloat(document.getElementById('op2').value);
     const operador = document.getElementById('operador').value;
