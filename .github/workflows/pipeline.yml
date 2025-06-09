@@ -42,6 +42,7 @@ jobs:
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test aprobado :)"
           MSG_MINIMAL: true
+          SLACK_FOOTER: "CICD - ICS"
 
       - name: Feedback - Test fallidos.
         if: failure()
@@ -54,6 +55,7 @@ jobs:
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test fallido :("
           MSG_MINIMAL: true
+          SLACK_FOOTER: "CICD - ICS"
 
       #sonarcloud
 
@@ -90,6 +92,7 @@ jobs:
           SLACK_TITLE: "Estado del Deploy:"
           SLACK_MESSAGE: "Deploy correcto :)"
           MSG_MINIMAL: true
+          SLACK_FOOTER: "CICD - ICS"
   
       - name: Feedback - Deploy fallido.
         if: failure()
@@ -102,5 +105,6 @@ jobs:
           SLACK_TITLE: "Estado del Deploy:"
           SLACK_MESSAGE: "Deploy fallido :("
           MSG_MINIMAL: true
+          SLACK_FOOTER: "CICD - ICS"
 
   #gestion de proyectos
