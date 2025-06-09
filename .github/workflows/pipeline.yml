@@ -22,7 +22,6 @@ jobs:
         
       - name: Instalar las dependencias.
         run: npm install
-        #- run: npm ci
       
       - name: Realizar las pruebas y el coverage.
         run: npm run coverage
@@ -59,5 +58,35 @@ jobs:
           build_directory: 'dist'
 
 
-  #feedback
+  Feedback:
+    runs-on: ubuntu-latest
+    needs: Build
+    steps:
+      - name: Checkout del repositorio.
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test aprobados.
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
+          SLACK_ICON_EMOJI: squirrel
+          SLACK_USERNAME: Test feedback
+          SLACK_TITLE: "Estado de las pruebas:"
+          SLACK_MESSAGE: "Test aprobado :)"
+      - name: Test fallidos.
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
+          SLACK_ICON_EMOJI: squirrel
+          SLACK_USERNAME: Test feedback
+          SLACK_COLOR: cancelled
+          SLACK_TITLE: "Estado de las pruebas:"
+          SLACK_MESSAGE: "Test fallido :("
 
+
+    
+
+  #gestion de proyectos
