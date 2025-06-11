@@ -98,6 +98,7 @@ jobs:
           SLACK_MESSAGE: "Deploy correcto :)"
           MSG_MINIMAL: true
           SLACK_FOOTER: "CICD - ICS"
+          SLACK_CHANNEL: deploy
   
       - name: Feedback - Deploy fallido.
         if: failure()
@@ -111,3 +112,4 @@ jobs:
           SLACK_MESSAGE: "Deploy fallido :("
           MSG_MINIMAL: true
           SLACK_FOOTER: "CICD - ICS"
+          SLACK_CHANNEL: deploy
