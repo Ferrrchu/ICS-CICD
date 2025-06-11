@@ -1,12 +1,10 @@
-name: Pipeline
+name: Actualización de funcionalidad
 
 on:
-  pull_request: 
-    types: 
-      - closed
-    branches: 
+  push:
+    branches-ignore: 
       - main
-
+ 
 jobs:
     
   Build:
@@ -61,53 +59,5 @@ jobs:
           SLACK_COLOR: failure
           SLACK_TITLE: "Estado de las pruebas:"
           SLACK_MESSAGE: "Test fallido :("
-          MSG_MINIMAL: true
-          SLACK_FOOTER: "CICD - ICS"
-
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: Build
-    steps:
-      - name: Checkout del repositorio.
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 
-
-      - name: Instalar las dependencias.
-        run: npm install
-
-      - name: Instalar Netlify CLI.
-        run: npm install -g netlify-cli
-
-      - name: Despliegue.
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
-        with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          NETLIFY_SITE_ID: ${{ secrets.ID_NETLIFY }}
-          build_directory: 'dist'
-
-      - name: Feedback - Deploy aprobado.
-        if: success()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
-          SLACK_ICON_EMOJI: squirrel
-          SLACK_USERNAME: Agente de feedback
-          SLACK_TITLE: "Estado del Deploy:"
-          SLACK_MESSAGE: "Deploy correcto :)"
-          MSG_MINIMAL: true
-          SLACK_FOOTER: "CICD - ICS"
-  
-      - name: Feedback - Deploy fallido.
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.TOKEN_SLACK }}
-          SLACK_ICON_EMOJI: squirrel
-          SLACK_USERNAME: Agente de feedback
-          SLACK_COLOR: failure
-          SLACK_TITLE: "Estado del Deploy:"
-          SLACK_MESSAGE: "Deploy fallido :("
           MSG_MINIMAL: true
           SLACK_FOOTER: "CICD - ICS"
