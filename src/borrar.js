@@ -7,6 +7,5 @@ export function borrar() {
  
     op1 = '';
     op2 = '';
-    operador = '+';
     elemResultado.style.display = "none"
 }
