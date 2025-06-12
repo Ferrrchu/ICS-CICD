@@ -1,6 +1,8 @@
 import { suma } from './suma.js';
 
 export function calcular() {
+    console.log("a")
+
     const op1 = parseFloat(document.getElementById('op1').value);
     const op2 = parseFloat(document.getElementById('op2').value);
     const operador = document.getElementById('operador').value;
@@ -34,4 +36,5 @@ export function calcular() {
     }
 
     elemResultado.textContent = "Resultado: " + resultado;
+    elemResultado.style.display = "block" 
 }
