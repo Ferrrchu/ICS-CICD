@@ -4,7 +4,7 @@ export function borrar() {
     let op2 = parseFloat(document.getElementById('op2').value);
     let operador = document.getElementById('operador').value;
     const elemResultado = document.getElementById('resultado');
-
+ 
     op1 = '';
     op2 = '';
     operador = '+';
