@@ -113,3 +113,4 @@ jobs:
           MSG_MINIMAL: true
           SLACK_FOOTER: "CICD - ICS"
           SLACK_CHANNEL: deploy
+          
